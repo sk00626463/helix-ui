@@ -1,6 +1,6 @@
-import { HXElement } from './HXElement';
-import shadowMarkup from './HXPillElement.html';
-import shadowStyles from './HXPillElement.less';
+const HXElement = require('./HXElement');
+const shadowMarkup = require('./HXPillElement.html');
+const shadowStyles = require('./HXPillElement.less');
 
 /**
  * Fires when the dismiss button ("X") is pressed.
@@ -17,7 +17,7 @@ import shadowStyles from './HXPillElement.less';
  * @hideconstructor
  * @since 0.8.0
  */
-export class HXPillElement extends HXElement {
+class HXPillElement extends HXElement {
     static get is () {
         return 'hx-pill';
     }
@@ -59,3 +59,5 @@ export class HXPillElement extends HXElement {
         return this.shadowRoot.getElementById('hxDismiss');
     }
 }
+
+module.exports = HXPillElement;

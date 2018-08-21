@@ -1,6 +1,6 @@
-import { HXElement } from './HXElement';
-import shadowMarkup from './HXAccordionPanelElement.html';
-import shadowStyles from './HXAccordionPanelElement.less';
+const HXElement = require('./HXElement');
+const shadowMarkup = require('./HXAccordionPanelElement.html');
+const shadowStyles = require('./HXAccordionPanelElement.less');
 
 /**
  * Fires when the element's contents are concealed.
@@ -27,7 +27,7 @@ import shadowStyles from './HXAccordionPanelElement.less';
  * @hideconstructor
  * @since 0.4.0
  */
-export class HXAccordionPanelElement extends HXElement {
+class HXAccordionPanelElement extends HXElement {
     static get is () {
         return 'hx-accordion-panel';
     }
@@ -99,3 +99,5 @@ export class HXAccordionPanelElement extends HXElement {
         }
     }
 }
+
+module.exports = HXAccordionPanelElement;

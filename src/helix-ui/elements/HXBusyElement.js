@@ -1,4 +1,4 @@
-import { HXElement } from './HXElement';
+const HXElement = require('./HXElement');
 
 /**
  * Defines behavior for the `<hx-busy>` element.
@@ -7,7 +7,7 @@ import { HXElement } from './HXElement';
  * @hideconstructor
  * @since 0.4.0
  */
-export class HXBusyElement extends HXElement {
+class HXBusyElement extends HXElement {
     static get is () {
         return 'hx-busy';
     }
@@ -38,3 +38,5 @@ export class HXBusyElement extends HXElement {
         }
     }
 }
+
+module.exports = HXBusyElement;

@@ -1,7 +1,7 @@
-import { HXElement } from './HXElement';
-import { KEYS } from '../utils';
-import shadowMarkup from './HXModalElement.html';
-import shadowStyles from './HXModalElement.less';
+const HXElement = require('./HXElement');
+const { KEYS } = require('../utils');
+const shadowMarkup = require('./HXModalElement.html');
+const shadowStyles = require('./HXModalElement.less');
 
 /**
  * Fires when the element is concealed.
@@ -28,7 +28,7 @@ import shadowStyles from './HXModalElement.less';
  * @hideconstructor
  * @since 0.2.1
  */
-export class HXModalElement extends HXElement {
+class HXModalElement extends HXElement {
     static get is () {
         return 'hx-modal';
     }
@@ -106,3 +106,5 @@ export class HXModalElement extends HXElement {
         }
     }
 }
+
+module.exports = HXModalElement;

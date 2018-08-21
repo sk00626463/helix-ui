@@ -1,6 +1,6 @@
-import { HXElement } from './HXElement';
-import shadowMarkup from './HXAlertElement.html';
-import shadowStyles from './HXAlertElement.less';
+const HXElement = require('./HXElement');
+const shadowMarkup = require('./HXAlertElement.html');
+const shadowStyles = require('./HXAlertElement.less');
 
 const ICONS = {
     'error': 'exclamation-circle',
@@ -34,7 +34,7 @@ const ICONS = {
  * @hideconstructor
  * @since 0.6.0
  */
-export class HXAlertElement extends HXElement {
+class HXAlertElement extends HXElement {
     static get is () {
         return 'hx-alert';
     }
@@ -214,3 +214,5 @@ export class HXAlertElement extends HXElement {
         return this.shadowRoot.getElementById('hxDismiss');
     }
 }
+
+module.exports = HXAlertElement;

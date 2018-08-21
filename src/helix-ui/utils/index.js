@@ -1,7 +1,7 @@
 /**
  * @module HelixUI/Utils
  */
-import Position from './position';
+const Position = require('./position');
 
 /**
  * Key/value map of key names and their keycode.
@@ -26,7 +26,7 @@ import Position from './position';
  * - Up
  * @enum {Integer}
  */
-export const KEYS = {
+const KEYS = {
     Alt: 18,
     Backspace: 8,
     Control: 17,
@@ -69,7 +69,7 @@ export const KEYS = {
  * @param {Event} evt - "scroll" event object
  * @returns {Boolean}
  */
-export function onScroll (evt) {
+function onScroll (evt) {
     let _evtScroll = new CustomEvent('scroll', {
         cancelable: true,
         bubbles: false,
@@ -79,9 +79,9 @@ export function onScroll (evt) {
     });
 
     return document.dispatchEvent(_evtScroll);
-}//onScroll()
+}
 
-export default {
+module.exports = {
     KEYS,
     Position,
     onScroll,

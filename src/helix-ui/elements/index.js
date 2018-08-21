@@ -1,28 +1,45 @@
-export { HXAccordionElement } from './HXAccordionElement';
-export { HXAccordionPanelElement } from './HXAccordionPanelElement';
-export { HXAlertElement } from './HXAlertElement';
-export { HXBusyElement } from './HXBusyElement';
-export { HXCheckboxElement } from './HXCheckboxElement';
-export { HXDisclosureElement } from './HXDisclosureElement';
-export { HXElement } from './HXElement';
-export { HXErrorElement } from './HXErrorElement';
-export { HXFileIconElement } from './HXFileIconElement';
-export { HXFileInputElement } from './HXFileInputElement';
-export { HXFileTileElement } from './HXFileTileElement';
-export { HXIconElement } from './HXIconElement';
-export { HXMenuElement } from './HXMenuElement';
-export { HXMenuitemElement } from './HXMenuitemElement';
-export { HXModalElement } from './HXModalElement';
-export { HXPillElement } from './HXPillElement';
-export { HXPopoverElement } from './HXPopoverElement';
-export { HXProgressElement } from './HXProgressElement';
-export { HXRevealElement } from './HXRevealElement';
-export { HXSearchAssistanceElement } from './HXSearchAssistanceElement';
-export { HXSearchElement } from './HXSearchElement';
-export { HXTabElement } from './HXTabElement';
-export { HXTabcontentElement } from './HXTabcontentElement';
-export { HXTablistElement } from './HXTablistElement';
-export { HXTabpanelElement } from './HXTabpanelElement';
-export { HXTabsetElement } from './HXTabsetElement';
-export { HXToastElement } from './HXToastElement';
-export { HXTooltipElement } from './HXTooltipElement';
+const elements = {
+    HXAccordionElement: require('./HXAccordionElement'),
+    HXAccordionPanelElement: require('./HXAccordionPanelElement'),
+    HXAlertElement: require('./HXAlertElement'),
+    HXBusyElement: require('./HXBusyElement'),
+    HXCheckboxElement: require('./HXCheckboxElement'),
+    HXDisclosureElement: require('./HXDisclosureElement'),
+    HXDivElement: require('./HXDivElement'),
+    HXElement: require('./HXElement'),
+    HXErrorElement: require('./HXErrorElement'),
+    HXFileIconElement: require('./HXFileIconElement'),
+    HXFileInputElement: require('./HXFileInputElement'),
+    HXFileTileElement: require('./HXFileTileElement'),
+    HXIconElement: require('./HXIconElement'),
+    HXMenuElement: require('./HXMenuElement'),
+    HXMenuitemElement: require('./HXMenuitemElement'),
+    HXModalElement: require('./HXModalElement'),
+    HXPillElement: require('./HXPillElement'),
+    HXPopoverElement: require('./HXPopoverElement'),
+    HXProgressElement: require('./HXProgressElement'),
+    HXRevealElement: require('./HXRevealElement'),
+    HXSearchAssistanceElement: require('./HXSearchAssistanceElement'),
+    HXSearchElement: require('./HXSearchElement'),
+    HXTabElement: require('./HXTabElement'),
+    HXTabcontentElement: require('./HXTabcontentElement'),
+    HXTablistElement: require('./HXTablistElement'),
+    HXTabpanelElement: require('./HXTabpanelElement'),
+    HXTabsetElement: require('./HXTabsetElement'),
+    HXToastElement: require('./HXToastElement'),
+    HXTooltipElement: require('./HXTooltipElement'),
+};
+
+/*
+ * Register element definitions with the Custom Element registry.
+ */
+function defineElements () {
+    for (let element in elements) {
+        elements[element].$define();
+    }
+}
+
+module.exports = {
+    defineElements,
+    elements,
+};

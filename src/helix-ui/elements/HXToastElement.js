@@ -1,6 +1,6 @@
-import { HXElement } from './HXElement';
-import shadowMarkup from './HXToastElement.html';
-import shadowStyles from './HXToastElement.less';
+const HXElement = require('./HXElement');
+const shadowMarkup = require('./HXToastElement.html');
+const shadowStyles = require('./HXToastElement.less');
 
 const ICONS = {
     'error': 'exclamation-circle',
@@ -33,7 +33,7 @@ const ICONS = {
  * @hideconstructor
  * @since 0.7.0
  */
-export class HXToastElement extends HXElement {
+class HXToastElement extends HXElement {
     static get is () {
         return 'hx-toast';
     }
@@ -151,3 +151,5 @@ export class HXToastElement extends HXElement {
         this.submit();
     }
 }
+
+module.exports = HXToastElement;

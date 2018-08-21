@@ -1,5 +1,5 @@
-import { HXElement } from './HXElement';
-import { KEYS } from '../utils';
+const HXElement = require('./HXElement');
+const { KEYS } = require('../utils');
 
 /**
  * Fires when the currently active tab changes.
@@ -19,7 +19,7 @@ import { KEYS } from '../utils';
  * @hideconstructor
  * @since 0.2.0
  */
-export class HXTabsetElement extends HXElement {
+class HXTabsetElement extends HXElement {
     static get is () {
         return 'hx-tabset';
     }
@@ -72,7 +72,7 @@ export class HXTabsetElement extends HXElement {
     }
     set currentTab (idx) {
         if (isNaN(idx)) {
-            throw new TypeError(`'currentTab' expects an numeric index. Got ${typeof idx} instead.`);
+            throw new TypeError('"currentTab" expects a numeric index.');
         }
 
         if (idx < 0 || idx >= this.tabs.length) {
@@ -195,3 +195,5 @@ export class HXTabsetElement extends HXElement {
         });
     }
 }
+
+module.exports = HXTabsetElement;

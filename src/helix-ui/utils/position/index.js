@@ -1,7 +1,8 @@
 /**
  * @module HelixUI/Utils/Position
  */
-import Offset, { offsetFunctionMap } from './offset';
+const Offset = require('./offset');
+const { functionMap: offsetFunctionMap } = Offset;
 
 /**
  * @typedef {Object} PositionConfig
@@ -58,7 +59,7 @@ import Offset, { offsetFunctionMap } from './offset';
  * - `left-bottom` &rarr; `left-top`
  * - etc.
  */
-export const verticalOpposites = {
+const verticalOpposites = {
     'top': 'bottom',
     'top-right': 'bottom-right',
     'top-left': 'bottom-left',
@@ -91,7 +92,7 @@ export const verticalOpposites = {
  * - `bottom-start` &rarr; `bottom-end`
  * - etc.
  */
-export const horizontalOpposites = {
+const horizontalOpposites = {
     'top': 'top',
     'top-right': 'top-left',
     'top-left': 'top-right',
@@ -140,23 +141,20 @@ function _getElementBox (element, coord) {
  * @param {HTMLElement} referenceElement - the element that is being offset from
  * @param {PositionConfig} config - configuration object
  *
- * @returns {XYPosition}
+ * @returns {XYPosition} relative (x,y) coordinates
  */
 function _getCoords (position, offsetElement, referenceElement, config) {
-    // The 'position' property is added to provide information about final
-    // calculated position of offset element in relation to reference element
-    let coords = {
-        x: 0,
-        y: 0,
-        position,
-    };
-
     let offRect = offsetElement.getBoundingClientRect();
     let refRect = referenceElement.getBoundingClientRect();
 
-    [ coords.x, coords.y ] = offsetFunctionMap[position](offRect, refRect, config);
+    let coords = offsetFunctionMap[position](offRect, refRect, config);
+
     coords.x += window.pageXOffset;
     coords.y += window.pageYOffset;
+
+    // The 'position' property is added to provide information about final
+    // calculated position of offset element in relation to reference element
+    coords.position = position;
 
     return coords;
 }
@@ -224,7 +222,7 @@ function _repositionTowardCenter (position, offscreen) {
  *
  * @returns {XYPosition}
  */
-export function getPosition (offsetElement, referenceElement, config) {
+function getPosition (offsetElement, referenceElement, config) {
     let defaults = {
         position: 'top',
         margin: 0,
@@ -264,7 +262,7 @@ export function getPosition (offsetElement, referenceElement, config) {
  *
  * @returns {XYPosition}
  */
-export function getPositionWithArrow (offsetElement, referenceElement, config) {
+function getPositionWithArrow (offsetElement, referenceElement, config) {
     let defaults = {
         margin: 12, // base to tip of the arrow
         offset: 20, // distance from the edge to the center of the arrow
@@ -275,8 +273,10 @@ export function getPositionWithArrow (offsetElement, referenceElement, config) {
     return getPosition(offsetElement, referenceElement, cfg);
 }
 
-export default {
+module.exports = {
     Offset,
     getPosition,
     getPositionWithArrow,
+    horizontalOpposites,
+    verticalOpposites,
 };

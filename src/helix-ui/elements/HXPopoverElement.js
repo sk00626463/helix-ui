@@ -1,8 +1,8 @@
-import { HXElement } from './HXElement';
-import { getPositionWithArrow } from '../utils/position';
-import debounce from 'lodash/debounce';
-import shadowMarkup from './HXPopoverElement.html';
-import shadowStyles from './HXPopoverElement.less';
+const HXElement = require('./HXElement');
+const { getPositionWithArrow } = require('../utils/position');
+const debounce = require('lodash/debounce');
+const shadowMarkup = require('./HXPopoverElement.html');
+const shadowStyles = require('./HXPopoverElement.less');
 
 /**
  * Fires when the element is concealed.
@@ -27,7 +27,7 @@ import shadowStyles from './HXPopoverElement.less';
  * @hideconstructor
  * @since 0.2.0
  */
-export class HXPopoverElement extends HXElement {
+class HXPopoverElement extends HXElement {
     static get is () {
         return 'hx-popover';
     }
@@ -135,3 +135,5 @@ export class HXPopoverElement extends HXElement {
         return this.getAttribute('position');
     }
 }
+
+module.exports = HXPopoverElement;

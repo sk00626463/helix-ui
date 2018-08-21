@@ -1,4 +1,4 @@
-import { KEYS } from '../utils';
+const { KEYS } = require('../utils');
 
 // Keep track of prepared templates
 const TEMPLATE_CACHE = {};
@@ -10,7 +10,7 @@ const TEMPLATE_CACHE = {};
  * @hideconstructor
  * @since 0.2.0
  */
-export class HXElement extends HTMLElement {
+class HXElement extends HTMLElement {
     /**
      * Defines the name of the element to register in the Custom Element registry
      *
@@ -133,7 +133,7 @@ export class HXElement extends HTMLElement {
     static get observedAttributes () {
         let common = [ 'disabled' ];
         let extra = this.$observedAttributes;
-        return [ ...common, ...extra ];
+        return [].concat(common, extra);
     }
 
     // Called when an attribute UPDATES (not just when it changes).
@@ -361,3 +361,5 @@ export class HXElement extends HTMLElement {
         /* eslint-enable no-console */
     }
 }
+
+module.exports = HXElement;

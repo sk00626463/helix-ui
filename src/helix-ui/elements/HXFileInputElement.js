@@ -1,6 +1,6 @@
-import { HXElement } from './HXElement';
-import shadowMarkup from './HXFileInputElement.html';
-import shadowStyles from './HXFileInputElement.less';
+const HXElement = require('./HXElement');
+const shadowMarkup = require('./HXFileInputElement.html');
+const shadowStyles = require('./HXFileInputElement.less');
 
 /**
  * Defines behavior for the `<hx-file-input>` element.
@@ -8,7 +8,7 @@ import shadowStyles from './HXFileInputElement.less';
  * @extends HXElement
  * @hideconstructor
  */
-export class HXFileInputElement extends HXElement {
+class HXFileInputElement extends HXElement {
     static get is () {
         return 'hx-file-input';
     }
@@ -106,3 +106,5 @@ export class HXFileInputElement extends HXElement {
         this.click();
     }
 }
+
+module.exports = HXFileInputElement;

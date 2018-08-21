@@ -1,6 +1,6 @@
-import { HXElement } from './HXElement';
-import { getPosition } from '../utils/position';
-import { onScroll } from '../utils';
+const HXElement = require('./HXElement');
+const { getPosition } = require('../utils/position');
+const { onScroll } = require('../utils');
 
 /**
  * Fires when the element's contents are concealed.
@@ -28,7 +28,7 @@ import { onScroll } from '../utils';
  * @see HXSearchElement
  * @since 0.6.0
  */
-export class HXSearchAssistanceElement extends HXElement {
+class HXSearchAssistanceElement extends HXElement {
     static get is () {
         return 'hx-search-assistance';
     }
@@ -102,3 +102,5 @@ export class HXSearchAssistanceElement extends HXElement {
         this.style.left = offset.x + 'px';
     }
 }
+
+module.exports = HXSearchAssistanceElement;

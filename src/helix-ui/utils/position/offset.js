@@ -11,8 +11,10 @@
  */
 
 /**
- * [x,y] coordinate array
- * @typedef {Array} XYCoordinate
+ * Viewport coordinate metadata (i.e., assume "`position: fixed`" in CSS)
+ * @typedef {Object} XYCoordinate
+ * @prop {Number} x
+ * @prop {Number} y
  */
 
 /**
@@ -24,10 +26,10 @@
  * @param {HTMLElement} ref - reference element
  * @return {XYCoordinate}
  */
-export function getCenter (off, ref) {
+function getCenter (off, ref) {
     let x = ref.left + (ref.width / 2) - (off.width / 2);
     let y = ref.top + (ref.height / 2) - (off.height / 2);
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -41,11 +43,11 @@ export function getCenter (off, ref) {
  * @param {PositionConfig} config - position configuration
  * @return {XYCoordinate}
  */
-export function getTop (off, ref, config) {
-    let [ x, y ] = getCenter(off, ref);
+function getTop (off, ref, config) {
+    let { x, y } = getCenter(off, ref);
     y = ref.top - off.height;
     y -= config.margin;
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -59,11 +61,11 @@ export function getTop (off, ref, config) {
  * @param {PositionConfig} config - position configuration
  * @return {XYCoordinate}
  */
-export function getBottom (off, ref, config) {
-    let [ x, y ] = getCenter(off, ref);
+function getBottom (off, ref, config) {
+    let { x, y } = getCenter(off, ref);
     y = ref.top + ref.height;
     y += config.margin;
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -77,10 +79,10 @@ export function getBottom (off, ref, config) {
  * @param {PositionConfig} config - position configuration
  * @return {XYCoordinate}
  */
-export function getLeft (off, ref, config) {
-    let [ x, y ] = getCenter(off, ref);
+function getLeft (off, ref, config) {
+    let { x, y } = getCenter(off, ref);
     x = ref.left - off.width - config.margin;
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -94,10 +96,10 @@ export function getLeft (off, ref, config) {
  * @param {PositionConfig} config - position configuration
  * @return {XYCoordinate}
  */
-export function getRight (off, ref, config) {
-    let [ x, y ] = getCenter(off, ref);
+function getRight (off, ref, config) {
+    let { x, y } = getCenter(off, ref);
     x = ref.left + ref.width + config.margin;
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -112,11 +114,11 @@ export function getRight (off, ref, config) {
  * @param {PositionConfig} config - position configuration
  * @return {XYCoordinate}
  */
-export function getTopLeft (off, ref, config) {
-    let [ x, y ] = getTop(off, ref, config);
+function getTopLeft (off, ref, config) {
+    let { x, y } = getTop(off, ref, config);
     x -= (off.width / 2);
     x += config.offset;
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -131,11 +133,11 @@ export function getTopLeft (off, ref, config) {
  * @param {PositionConfig} config - position configuration
  * @return {XYCoordinate}
  */
-export function getTopStart (off, ref, config) {
-    let [ x, y ] = getTop(off, ref, config);
+function getTopStart (off, ref, config) {
+    let { x, y } = getTop(off, ref, config);
     x = ref.left;
     x += config.offset;
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -150,11 +152,11 @@ export function getTopStart (off, ref, config) {
  * @param {PositionConfig} config - position configuration
  * @return {XYCoordinate}
  */
-export function getTopEnd (off, ref, config) {
-    let [ x, y ] = getTop(off, ref, config);
+function getTopEnd (off, ref, config) {
+    let { x, y } = getTop(off, ref, config);
     x = ref.right - off.width;
     x -= config.offset;
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -169,11 +171,11 @@ export function getTopEnd (off, ref, config) {
  * @param {PositionConfig} config - position configuration
  * @return {XYCoordinate}
  */
-export function getTopRight (off, ref, config) {
-    let [ x, y ] = getTop(off, ref, config);
+function getTopRight (off, ref, config) {
+    let { x, y } = getTop(off, ref, config);
     x += (off.width / 2);
     x -= config.offset;
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -188,11 +190,11 @@ export function getTopRight (off, ref, config) {
  * @param {PositionConfig} config - position configuration
  * @return {XYCoordinate}
  */
-export function getRightTop (off, ref, config) {
-    let [ x, y ] = getRight(off, ref, config);
+function getRightTop (off, ref, config) {
+    let { x, y } = getRight(off, ref, config);
     y -= (off.height / 2);
     y += config.offset;
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -207,11 +209,11 @@ export function getRightTop (off, ref, config) {
  * @param {PositionConfig} config - position configuration
  * @return {XYCoordinate}
  */
-export function getRightStart (off, ref, config) {
-    let [ x, y ] = getRight(off, ref, config);
+function getRightStart (off, ref, config) {
+    let { x, y } = getRight(off, ref, config);
     y = ref.top;
     y += config.offset;
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -226,11 +228,11 @@ export function getRightStart (off, ref, config) {
  * @param {PositionConfig} config - position configuration
  * @return {XYCoordinate}
  */
-export function getRightEnd (off, ref, config) {
-    let [ x, y ] = getRight(off, ref, config);
+function getRightEnd (off, ref, config) {
+    let { x, y } = getRight(off, ref, config);
     y = ref.bottom - off.height;
     y -= config.offset;
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -245,11 +247,11 @@ export function getRightEnd (off, ref, config) {
  * @param {PositionConfig} config - position configuration
  * @return {XYCoordinate}
  */
-export function getRightBottom (off, ref, config) {
-    let [ x, y ] = getRight(off, ref, config);
+function getRightBottom (off, ref, config) {
+    let { x, y } = getRight(off, ref, config);
     y += off.height / 2;
     y -= config.offset;
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -264,11 +266,11 @@ export function getRightBottom (off, ref, config) {
  * @param {PositionConfig} config - position configuration
  * @return {XYCoordinate}
  */
-export function getBottomRight (off, ref, config) {
-    let [ x, y ] = getBottom(off, ref, config);
+function getBottomRight (off, ref, config) {
+    let { x, y } = getBottom(off, ref, config);
     x += (off.width / 2);
     x -= config.offset;
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -283,11 +285,11 @@ export function getBottomRight (off, ref, config) {
  * @param {PositionConfig} config - position configuration
  * @return {XYCoordinate}
  */
-export function getBottomEnd (off, ref, config) {
-    let [ x, y ] = getBottom(off, ref, config);
+function getBottomEnd (off, ref, config) {
+    let { x, y } = getBottom(off, ref, config);
     x = ref.right - off.width;
     x -= config.offset;
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -302,11 +304,11 @@ export function getBottomEnd (off, ref, config) {
  * @param {PositionConfig} config - position configuration
  * @return {XYCoordinate}
  */
-export function getBottomStart (off, ref, config) {
-    let [ x, y ] = getBottom(off, ref, config);
+function getBottomStart (off, ref, config) {
+    let { x, y } = getBottom(off, ref, config);
     x = ref.left;
     x += config.offset;
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -321,11 +323,11 @@ export function getBottomStart (off, ref, config) {
  * @param {PositionConfig} config - position configuration
  * @return {XYCoordinate}
  */
-export function getBottomLeft (off, ref, config) {
-    let [ x, y ] = getBottom(off, ref, config);
+function getBottomLeft (off, ref, config) {
+    let { x, y } = getBottom(off, ref, config);
     x -= (off.width / 2);
     x += config.offset;
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -340,11 +342,11 @@ export function getBottomLeft (off, ref, config) {
  * @param {PositionConfig} config - position configuration
  * @return {XYCoordinate}
  */
-export function getLeftBottom (off, ref, config) {
-    let [ x, y ] = getLeft(off, ref, config);
+function getLeftBottom (off, ref, config) {
+    let { x, y } = getLeft(off, ref, config);
     y += off.height / 2;
     y -= config.offset;
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -359,11 +361,11 @@ export function getLeftBottom (off, ref, config) {
  * @param {PositionConfig} config - position configuration
  * @return {XYCoordinate}
  */
-export function getLeftEnd (off, ref, config) {
-    let [ x, y ] = getLeft(off, ref, config);
+function getLeftEnd (off, ref, config) {
+    let { x, y } = getLeft(off, ref, config);
     y = ref.bottom - off.height;
     y -= config.offset;
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -378,11 +380,11 @@ export function getLeftEnd (off, ref, config) {
  * @param {PositionConfig} config - position configuration
  * @return {XYCoordinate}
  */
-export function getLeftStart (off, ref, config) {
-    let [ x, y ] = getLeft(off, ref, config);
+function getLeftStart (off, ref, config) {
+    let { x, y } = getLeft(off, ref, config);
     y = ref.top;
     y += config.offset;
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -397,11 +399,11 @@ export function getLeftStart (off, ref, config) {
  * @param {PositionConfig} config - position configuration
  * @return {XYCoordinate}
  */
-export function getLeftTop (off, ref, config) {
-    let [ x, y ] = getLeft(off, ref, config);
+function getLeftTop (off, ref, config) {
+    let { x, y } = getLeft(off, ref, config);
     y -= (off.height / 2);
     y += config.offset;
-    return [ x, y ];
+    return { x, y };
 }
 
 /**
@@ -417,9 +419,9 @@ export function getLeftTop (off, ref, config) {
  * ```
  *
  * @enum {Function}
- * @name offsetFunctionMap
+ * @name functionMap
  */
-export const offsetFunctionMap = {
+const functionMap = {
     'top-left': getTopLeft,
     'top-start': getTopStart,
     'top': getTop,
@@ -443,7 +445,8 @@ export const offsetFunctionMap = {
     'center': getCenter,
 };
 
-export default {
+module.exports = {
+    functionMap,
     getBottom,
     getBottomEnd,
     getBottomLeft,
@@ -464,5 +467,5 @@ export default {
     getTopLeft,
     getTopRight,
     getTopStart,
-    offsetFunctionMap,
+    offsetFunctionMap: functionMap, // DEPRECATED: remove in 1.0.0
 };

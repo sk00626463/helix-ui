@@ -1,6 +1,6 @@
-import { HXElement } from './HXElement';
-import shadowMarkup from './HXCheckboxElement.html';
-import shadowStyles from './HXCheckboxElement.less';
+const HXElement = require('./HXElement');
+const shadowMarkup = require('./HXCheckboxElement.html');
+const shadowStyles = require('./HXCheckboxElement.less');
 
 /**
  * Fires when the element's `checked` state changes
@@ -18,7 +18,7 @@ import shadowStyles from './HXCheckboxElement.less';
  * @hideconstructor
  * @since 0.1.8
  */
-export class HXCheckboxElement extends HXElement {
+class HXCheckboxElement extends HXElement {
     static get is () {
         return 'hx-checkbox';
     }
@@ -123,3 +123,5 @@ export class HXCheckboxElement extends HXElement {
         return this.shadowRoot.getElementById('hxNativeControl');
     }
 }
+
+module.exports = HXCheckboxElement;

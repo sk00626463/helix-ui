@@ -1,5 +1,5 @@
-import { HXElement } from './HXElement';
-import { KEYS } from '../utils';
+const HXElement = require('./HXElement');
+const { KEYS } = require('../utils');
 
 /**
  * Defines behavior for the `<hx-disclosure>` element.
@@ -8,7 +8,7 @@ import { KEYS } from '../utils';
  * @hideconstructor
  * @since 0.2.0
  */
-export class HXDisclosureElement extends HXElement {
+class HXDisclosureElement extends HXElement {
     static get is () {
         return 'hx-disclosure';
     }
@@ -123,3 +123,5 @@ export class HXDisclosureElement extends HXElement {
         this.click();
     }
 }
+
+module.exports = HXDisclosureElement;

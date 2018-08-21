@@ -1,5 +1,5 @@
-import { HXElement } from './HXElement';
-import { onScroll } from '../utils';
+const HXElement = require('./HXElement');
+const { onScroll } = require('../utils');
 
 /**
  * Fires when the element's contents are concealed.
@@ -26,7 +26,7 @@ import { onScroll } from '../utils';
  * @hideconstructor
  * @since 0.2.0
  */
-export class HXTabpanelElement extends HXElement {
+class HXTabpanelElement extends HXElement {
     static get is () {
         return 'hx-tabpanel';
     }
@@ -67,3 +67,5 @@ export class HXTabpanelElement extends HXElement {
         }
     }
 }
+
+module.exports = HXTabpanelElement;

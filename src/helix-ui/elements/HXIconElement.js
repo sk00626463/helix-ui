@@ -1,7 +1,7 @@
-import { HXElement } from './HXElement';
-import ICONS from '../icons';
-import shadowStyles from './HXIconElement.less';
-import shadowMarkup from './HXIconElement.html';
+const HXElement = require('./HXElement');
+const ICONS = require('../icons');
+const shadowStyles = require('./HXIconElement.less');
+const shadowMarkup = require('./HXIconElement.html');
 
 const DIV = document.createElement('div');
 
@@ -11,7 +11,7 @@ const DIV = document.createElement('div');
  * @extends HXElement
  * @since 0.1.0
  */
-export class HXIconElement extends HXElement {
+class HXIconElement extends HXElement {
     static get is () {
         return 'hx-icon';
     }
@@ -98,3 +98,5 @@ export class HXIconElement extends HXElement {
         return this.shadowRoot.getElementById('hxPath');
     }
 }
+
+module.exports = HXIconElement;

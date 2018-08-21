@@ -1,8 +1,5 @@
 /** @module HelixUI */
-import * as Elements from './elements';
-export { version as VERSION } from '../../package.json';
-export { default as ICONS } from './icons';
-export { default as Utils } from './utils';
+const { defineElements } = require('./elements');
 
 /**
  * @external CustomEvent
@@ -41,36 +38,27 @@ export { default as Utils } from './utils';
  * - MDN: [HTMLTemplateElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTemplateElement)
  */
 
-/*
- * Register element definitions with the Custom Element registry.
- */
-function _defineElements () {
-    for (let element in Elements) {
-        Elements[element].$define();
-    }
-}
-
 /**
  * Initialize HelixUI when Web Components are ready.
  */
-export function initialize () {
+function initialize () {
     if (window.WebComponents) {
         // Polyfill detected
         if (window.WebComponents.ready) {
             // polyfill already finished loading, initialize immediately
-            _defineElements();
+            defineElements();
         } else {
             // initialize when polyfill has finished loading
             window.addEventListener('WebComponentsReady', function () {
-                _defineElements();
+                defineElements();
             });
         }
     } else {
         // No polyfills detected, initialize immediately
-        _defineElements();
+        defineElements();
     }
 }
 
-export {
-    Elements,
+module.exports = {
+    initialize,
 };

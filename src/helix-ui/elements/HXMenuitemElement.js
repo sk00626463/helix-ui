@@ -1,4 +1,4 @@
-import { HXElement } from './HXElement';
+const HXElement = require('./HXElement');
 
 /**
  * Defines behavior for the `<hx-menuitem>` element.
@@ -7,7 +7,7 @@ import { HXElement } from './HXElement';
  * @hideconstructor
  * @since 0.2.0
  */
-export class HXMenuitemElement extends HXElement {
+class HXMenuitemElement extends HXElement {
     static get is () {
         return 'hx-menuitem';
     }
@@ -16,3 +16,5 @@ export class HXMenuitemElement extends HXElement {
         this.$defaultAttribute('role', 'menuitem');
     }
 }
+
+module.exports = HXMenuitemElement;

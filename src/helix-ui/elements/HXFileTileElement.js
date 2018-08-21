@@ -1,6 +1,6 @@
-import { HXElement } from './HXElement';
-import shadowMarkup from './HXFileTileElement.html';
-import shadowStyles from './HXFileTileElement.less';
+const HXElement = require('./HXElement');
+const shadowMarkup = require('./HXFileTileElement.html');
+const shadowStyles = require('./HXFileTileElement.less');
 
 // number of characters to avoid truncation at start/end of file name
 const PRE_TRUNC = 14;
@@ -39,7 +39,7 @@ const PRE_TRUNC = 14;
  * @hideconstructor
  * @since 0.12.0
  */
-export class HXFileTileElement extends HXElement {
+class HXFileTileElement extends HXElement {
     static get is () {
         return 'hx-file-tile';
     }
@@ -331,3 +331,5 @@ export class HXFileTileElement extends HXElement {
         `;
     }
 }
+
+module.exports = HXFileTileElement;

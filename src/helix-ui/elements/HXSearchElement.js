@@ -1,6 +1,6 @@
-import { HXElement } from './HXElement';
-import shadowStyles from './HXSearchElement.less';
-import shadowMarkup from './HXSearchElement.html';
+const HXElement = require('./HXElement');
+const shadowStyles = require('./HXSearchElement.less');
+const shadowMarkup = require('./HXSearchElement.html');
 
 /**
  * Fires when the element loses focus.
@@ -41,7 +41,7 @@ import shadowMarkup from './HXSearchElement.html';
  * @see HXSearchAssistanceElement
  * @since 0.4.0
  */
-export class HXSearchElement extends HXElement {
+class HXSearchElement extends HXElement {
     static get is () {
         return 'hx-search';
     }
@@ -207,3 +207,5 @@ export class HXSearchElement extends HXElement {
         this._btnClear.hidden = !hasValue;
     }
 }
+
+module.exports = HXSearchElement;

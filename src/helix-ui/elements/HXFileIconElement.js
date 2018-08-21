@@ -1,6 +1,6 @@
-import { HXElement } from './HXElement';
-import shadowStyles from './HXFileIconElement.less';
-import shadowMarkup from './HXFileIconElement.html';
+const HXElement = require('./HXElement');
+const shadowStyles = require('./HXFileIconElement.less');
+const shadowMarkup = require('./HXFileIconElement.html');
 
 /**
  * Defines behavior for the `<hx-file-icon>` element.
@@ -8,7 +8,7 @@ import shadowMarkup from './HXFileIconElement.html';
  * @extends HXElement
  * @hideconstructor
  */
-export class HXFileIconElement extends HXElement {
+class HXFileIconElement extends HXElement {
     static get is () {
         return 'hx-file-icon';
     }
@@ -16,7 +16,7 @@ export class HXFileIconElement extends HXElement {
     static get template () {
         return `<style>${shadowStyles}</style>${shadowMarkup}`;
     }
-        
+
     $onConnect () {
         this.$upgradeProperty('type');
     }
@@ -24,7 +24,7 @@ export class HXFileIconElement extends HXElement {
     static get $observedAttributes () {
         return [ 'type' ];
     }
-    
+
     $onAttributeChange (attr, oldVal, newVal) {
         if (attr === 'type') {
             this._elIcon.type = newVal;
@@ -46,3 +46,5 @@ export class HXFileIconElement extends HXElement {
         return this.shadowRoot.getElementById('hxIcon');
     }
 }
+
+module.exports = HXFileIconElement;

@@ -1,4 +1,4 @@
-import { HXElement } from './HXElement';
+const HXElement = require('./HXElement');
 
 /**
  * Fires in single-panel mode, when the current panel changes.
@@ -16,7 +16,7 @@ import { HXElement } from './HXElement';
  * @hideconstructor
  * @since 0.4.0
  */
-export class HXAccordionElement extends HXElement {
+class HXAccordionElement extends HXElement {
     static get is () {
         return 'hx-accordion';
     }
@@ -154,3 +154,5 @@ export class HXAccordionElement extends HXElement {
         this.selectPrevious();
     }
 }
+
+module.exports = HXAccordionElement;

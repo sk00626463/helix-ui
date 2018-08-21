@@ -1,6 +1,6 @@
-import { HXElement } from './HXElement';
-import shadowMarkup from './HXProgressElement.html';
-import shadowStyles from './HXProgressElement.less';
+const HXElement = require('./HXElement');
+const shadowMarkup = require('./HXProgressElement.html');
+const shadowStyles = require('./HXProgressElement.less');
 
 const MIN = 0;
 const MAX = 100;
@@ -28,7 +28,7 @@ function _parseValue (val) {
  * @hideconstructor
  * @since 0.7.0
  */
-export class HXProgressElement extends HXElement {
+class HXProgressElement extends HXElement {
     static get is () {
         return 'hx-progress';
     }
@@ -77,3 +77,5 @@ export class HXProgressElement extends HXElement {
         return this.shadowRoot.getElementById('hxFill');
     }
 }
+
+module.exports = HXProgressElement;

@@ -1,4 +1,4 @@
-import { HXElement } from './HXElement';
+const HXElement = require('./HXElement');
 
 /**
  * Defines behavior for the `<hx-tablist>` element.
@@ -7,7 +7,7 @@ import { HXElement } from './HXElement';
  * @hideconstructor
  * @since 0.2.0
  */
-export class HXTablistElement extends HXElement {
+class HXTablistElement extends HXElement {
     static get is () {
         return 'hx-tablist';
     }
@@ -16,3 +16,5 @@ export class HXTablistElement extends HXElement {
         this.$defaultAttribute('role', 'tablist');
     }
 }
+
+module.exports = HXTablistElement;

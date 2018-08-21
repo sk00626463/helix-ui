@@ -1,4 +1,4 @@
-import { HXElement } from './HXElement';
+const HXElement = require('./HXElement');
 
 /**
  * Fires when the element's contents are concealed.
@@ -25,7 +25,7 @@ import { HXElement } from './HXElement';
  * @hideconstructor
  * @since 0.2.0
  */
-export class HXRevealElement extends HXElement {
+class HXRevealElement extends HXElement {
     static get is () {
         return 'hx-reveal';
     }
@@ -65,3 +65,5 @@ export class HXRevealElement extends HXElement {
         return this.hasAttribute('open');
     }
 }
+
+module.exports = HXRevealElement;

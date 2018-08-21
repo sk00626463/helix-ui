@@ -1,5 +1,5 @@
-import { HXElement } from './HXElement';
-import { getPosition } from '../utils/position';
+const HXElement = require('./HXElement');
+const { getPosition } = require('../utils/position');
 
 /**
  * Fires when the element is concealed.
@@ -26,7 +26,7 @@ import { getPosition } from '../utils/position';
  * @hideconstructor
  * @since 0.2.0
  */
-export class HXMenuElement extends HXElement {
+class HXMenuElement extends HXElement {
     static get is () {
         return 'hx-menu';
     }
@@ -134,3 +134,5 @@ export class HXMenuElement extends HXElement {
         }
     }
 }
+
+module.exports = HXMenuElement;

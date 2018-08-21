@@ -1,5 +1,5 @@
-import { HXElement } from './HXElement';
-import { onScroll } from '../utils';
+const HXElement = require('./HXElement');
+const { onScroll } = require('../utils');
 
 /**
  * Nullable string denoting direction for scrolling.
@@ -18,7 +18,7 @@ import { onScroll } from '../utils';
  * @extends HXElement
  * @hideconstructor
  */
-export class HXDivElement extends HXElement {
+class HXDivElement extends HXElement {
     static get is () {
         return 'hx-div';
     }
@@ -59,3 +59,5 @@ export class HXDivElement extends HXElement {
         this.scrollLeft = 0;
     }
 }
+
+module.exports = HXDivElement;

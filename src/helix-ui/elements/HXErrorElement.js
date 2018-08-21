@@ -1,6 +1,6 @@
-import { HXElement } from './HXElement';
-import shadowStyles from './HXErrorElement.less';
-import shadowMarkup from './HXErrorElement.html';
+const HXElement = require('./HXElement');
+let shadowStyles = require('./HXErrorElement.less');
+let shadowMarkup = require('./HXErrorElement.html');
 
 /**
  * Defines behavior for the `<hx-error>` element.
@@ -9,7 +9,7 @@ import shadowMarkup from './HXErrorElement.html';
  * @hideconstructor
  * @since 0.4.0
  */
-export class HXErrorElement extends HXElement {
+class HXErrorElement extends HXElement {
     static get is () {
         return 'hx-error';
     }
@@ -18,3 +18,5 @@ export class HXErrorElement extends HXElement {
         return `<style>${shadowStyles}</style>${shadowMarkup}`;
     }
 }
+
+module.exports = HXErrorElement;

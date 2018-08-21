@@ -1,8 +1,8 @@
-import { HXElement } from './HXElement';
-import { getPositionWithArrow } from '../utils/position';
-import debounce from 'lodash/debounce';
-import shadowMarkup from './HXTooltipElement.html';
-import shadowStyles from './HXTooltipElement.less';
+const HXElement = require('./HXElement');
+const { getPositionWithArrow } = require('../utils/position');
+const debounce = require('lodash/debounce');
+const shadowMarkup = require('./HXTooltipElement.html');
+const shadowStyles = require('./HXTooltipElement.less');
 
 /**
  * Fires when the element's contents are concealed.
@@ -29,7 +29,7 @@ import shadowStyles from './HXTooltipElement.less';
  * @hideconstructor
  * @since 0.2.0
  */
-export class HXTooltipElement extends HXElement {
+class HXTooltipElement extends HXElement {
     static get is () {
         return 'hx-tooltip';
     }
@@ -203,3 +203,5 @@ export class HXTooltipElement extends HXElement {
         }
     }
 }
+
+module.exports = HXTooltipElement;

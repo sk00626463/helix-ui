@@ -8,8 +8,8 @@
     "ui toolkit",
     "v1"
   ],
-  "main": "dist/scripts/helix-ui.js",
-  "module": "dist/scripts/helix-ui.es.js",
+  "main": "FIXME.js",
+  "module": "FIXME.mjs",
   "files": [
     "dist/"
   ],
