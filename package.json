@@ -68,7 +68,7 @@
     "lint": "eslint -c .eslintrc.prod.json src",
     "postversion": "git push origin --tags",
     "prepublishOnly": "yarn compile",
-    "rollup": "rollup -c rollup.config.js",
+    "rollup": "rollup -c rollup.config.mjs",
     "preserve": "yarn clean:public && yarn generate",
     "serve": "bin/serve.js",
     "prestart": "yarn clean:public && yarn generate",

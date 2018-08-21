@@ -12,6 +12,9 @@ CONFIG.docsDir = 'docs';
 CONFIG.testDir = 'test';
 CONFIG.distDir = 'dist';
 
+// NOTE: Update rollup.config.js, too
+CONFIG.styleSrcDir = `${CONFIG.sourceDir}/styles`;
+
 // Component Explorer configuration
 // Used directly for "site" rendering context
 CONFIG.site = {
@@ -28,7 +31,7 @@ CONFIG.site = {
 CONFIG.less = {
     paths: [
         `${CONFIG.docsDir}/styles`,
-        `${CONFIG.sourceDir}/helix-ui/styles`
+        `${CONFIG.styleSrcDir}`
     ],
 };
 
