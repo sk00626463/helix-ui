@@ -30,13 +30,17 @@ const elements = {
     HXTooltipElement: require('./HXTooltipElement'),
 };
 
-/*
+/**
  * Register element definitions with the Custom Element registry.
+ * @param {Function} [next] Callback function to execute after all
+ * custom elements have been defined.
+ * @todo test callback functionality
  */
-function defineElements () {
+function defineElements (next) {
     for (let element in elements) {
         elements[element].$define();
     }
+    next && next();
 }
 
 module.exports = {

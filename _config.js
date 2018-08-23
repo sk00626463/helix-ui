@@ -11,6 +11,7 @@ CONFIG.sourceDir = 'src';
 CONFIG.docsDir = 'docs';
 CONFIG.testDir = 'test';
 CONFIG.distDir = 'dist';
+CONFIG.buildDir = 'build';
 
 // NOTE: Update rollup.config.js, too
 CONFIG.styleSrcDir = `${CONFIG.sourceDir}/styles`;
@@ -28,11 +29,16 @@ CONFIG.site = {
 };
 
 // Configuration for the LESS precompiler
+let lessPaths = [
+    `${CONFIG.docsDir}/styles`,
+    `${CONFIG.styleSrcDir}`
+];
+let fullPaths = lessPaths.map((_path) => {
+    return path.resolve(CONFIG.root, _path);
+});
 CONFIG.less = {
-    paths: [
-        `${CONFIG.docsDir}/styles`,
-        `${CONFIG.styleSrcDir}`
-    ],
+    fullPaths,
+    paths: lessPaths,
 };
 
 /* Define Exports */

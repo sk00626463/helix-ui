@@ -40,22 +40,25 @@ const { defineElements } = require('./elements');
 
 /**
  * Initialize HelixUI when Web Components are ready.
+ * @param {Function} [next] Callback function to execute
+ * once HelixUI has finished initializing.
+ * @todo test callback functionality
  */
-function initialize () {
+function initialize (next) {
     if (window.WebComponents) {
         // Polyfill detected
         if (window.WebComponents.ready) {
             // polyfill already finished loading, initialize immediately
-            defineElements();
+            defineElements(next);
         } else {
             // initialize when polyfill has finished loading
             window.addEventListener('WebComponentsReady', function () {
-                defineElements();
+                defineElements(next);
             });
         }
     } else {
         // No polyfills detected, initialize immediately
-        defineElements();
+        defineElements(next);
     }
 }
 

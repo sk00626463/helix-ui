@@ -10,6 +10,7 @@ db.json
 public/
 .deploy*/
 dist/
+build/
 
 # Private credentials/config
 _config.private.js
